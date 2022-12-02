@@ -7,7 +7,7 @@ COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
 COPY main.go ./
-RUN go build -o /rand-server
+RUN CGO_ENABLED=0 go build -o /rand-server
 
 ## Deploy
 FROM gcr.io/distroless/base-debian11
